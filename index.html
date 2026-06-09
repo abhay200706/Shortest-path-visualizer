@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Route Planner — Algorithm Visualizer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Route Planner</h1>
+    <p>Algorithm Visualizer — Dijkstra · A* · Bellman-Ford</p>
+  </header>
+
+  <main>
+
+    <!-- LEFT: Controls -->
+    <section class="controls">
+
+      <div class="control-group">
+        <label>Algorithm</label>
+        <select id="algoSelect">
+          <option value="dijkstra">Dijkstra</option>
+          <option value="astar">A* (A-Star)</option>
+          <option value="bellman">Bellman-Ford</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label>Source Node</label>
+        <select id="sourceSelect"></select>
+      </div>
+
+      <div class="control-group">
+        <label>Target Node</label>
+        <select id="targetSelect"></select>
+      </div>
+
+      <button id="runBtn">Run Algorithm</button>
+      <button id="resetBtn" class="secondary">Reset</button>
+
+      <!-- Step-by-step controls -->
+      <div class="step-controls">
+        <button id="prevBtn" disabled>◀ Prev</button>
+        <span id="stepLabel">Step: —</span>
+        <button id="nextBtn" disabled>Next ▶</button>
+      </div>
+
+      <!-- Info panel -->
+      <div class="info-panel" id="infoPanel">
+        <p>Select source and target, then click <strong>Run</strong>.</p>
+      </div>
+
+      <!-- Performance stats -->
+      <div class="stats" id="stats" style="display:none">
+        <h3>Stats</h3>
+        <p>Nodes visited: <strong id="statVisited">—</strong></p>
+        <p>Path length: <strong id="statLength">—</strong></p>
+        <p>Total cost: <strong id="statCost">—</strong></p>
+      </div>
+
+    </section>
+
+    <!-- RIGHT: Canvas -->
+    <section class="canvas-wrap">
+      <canvas id="graphCanvas" width="760" height="520"></canvas>
+      <p class="canvas-hint">Click any node to set source / target</p>
+    </section>
+
+  </main>
+
+  <!-- Legend -->
+  <div class="legend">
+    <span class="dot unvisited"></span> Unvisited
+    <span class="dot visited"></span> Visited
+    <span class="dot current"></span> Current
+    <span class="dot path"></span> Final Path
+    <span class="dot source"></span> Source
+    <span class="dot target"></span> Target
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
